@@ -15,8 +15,7 @@ async def download_characters_data():
     Endpoint to download all episodes data from the Rick and Morty API.
     """
     try:
-        parsed_data = await episode_controller.download_all_data()
-        file_path = await utils.save_json_to_file(parsed_data['episodes'], parsed_data['fname'])
-        return FileResponse(file_path, media_type='application/json', filename=parsed_data['fname'])
+        file = await episode_controller.download_all_data()
+        return FileResponse(file['path'], media_type='application/json', filename=file['fname'])
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e)) from e
