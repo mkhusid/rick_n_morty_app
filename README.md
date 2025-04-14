@@ -28,6 +28,6 @@ pip install -r requirements.txt
 uvicorn app.main:app
 ```
 
-4. Opend Swagger docs by this URL:
+4. Open Swagger docs by this URL:
 
 [http://localhost:8000/docs](#)
