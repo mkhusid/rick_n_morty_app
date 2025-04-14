@@ -23,7 +23,11 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-1. Run the FastAPI app using Uvicorn:
+3. Run the FastAPI app using Uvicorn:
 ```bash
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+uvicorn app.main:app
 ```
+
+4. Opend Swagger docs by this URL:
+
+[http://localhost:8000/docs](#)
