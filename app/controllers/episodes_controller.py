@@ -20,7 +20,8 @@ class EpisodesController:
         Download all episodes data from the Rick and Morty API
         and parse it into a list of Episode objects.
         """
-        async with self.rm_client as client:
+        filename = "episodes_data.json"
+        async with self.rm_client() as client:
             episodes = await client.get_episodes()
             parsed_data = [Episode(**episode) for episode in episodes]
-            return parsed_data
+            return {"episodes": parsed_data, "fname": filename}

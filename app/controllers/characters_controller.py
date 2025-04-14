@@ -19,7 +19,8 @@ class CharactersController:
         Download all characters data from the Rick and Morty API
         and parse it into a list of Character objects.
         """
-        async with self.rm_client as client:
+        filename = "characters_data.json"
+        async with self.rm_client() as client:
             characters = await client.get_characters()
             parsed_data = [Character(**character) for character in characters]
-            return parsed_data
+            return {"characters": parsed_data, "fname": filename}

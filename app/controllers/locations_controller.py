@@ -19,7 +19,8 @@ class LocationsController:
         Download all locations data from the Rick and Morty API
         and parse it into a list of Location objects.
         """
-        async with self.rm_client as client:
+        filename = "locations_data.json"
+        async with self.rm_client() as client:
             locations = await client.get_locations()
             parsed_data = [Location(**location) for location in locations]
-            return parsed_data
+            return {"locations": parsed_data, "fname": filename}
