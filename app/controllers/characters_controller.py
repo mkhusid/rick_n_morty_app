@@ -4,7 +4,7 @@ the logic for interacting with character-related endpoints.
 
 In later versions more logic will be added here to handle specific character-related tasks.
 '''
-from typing import Dict
+from typing import Dict, Union
 from client.rm_client import RickAndMortyClient
 from app.models.character import Character
 
@@ -15,7 +15,7 @@ class CharactersController:
     def __init__(self, rm_client: RickAndMortyClient):
         self.rm_client = rm_client
 
-    async def download_all_data(self) -> Dict[str, list[Character]]:
+    async def download_all_data(self) -> Dict[str, Union[list[Character], str]]:
         """
         Download all characters data from the Rick and Morty API
         and parse it into a list of Character objects.
